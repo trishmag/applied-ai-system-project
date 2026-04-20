@@ -1,7 +1,8 @@
+cat << 'EOF' > app.py
+import streamlit as st
+import random
 from dotenv import load_dotenv
 load_dotenv()
-import random
-import streamlit as st
 from logic_utils import (
     get_range_for_difficulty,
     parse_guess,
@@ -106,7 +107,8 @@ with tab_game:
             )
     else:
         if submit:
-            ok, guess, err = parse_guess(raw_guess)
+            # UPDATED: We now pass low and high to the validator
+            ok, guess, err = parse_guess(raw_guess, low, high)
 
             if not ok:
                 st.error(err)
@@ -244,3 +246,4 @@ with tab_eval:
 - 🎯 Average attempts to win: {stats['avg_attempts']}
 - 💯 Average score: {stats['avg_score']}
         """)
+EOF
