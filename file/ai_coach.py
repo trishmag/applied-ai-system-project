@@ -1,8 +1,9 @@
-# ai_coach.py
-# Uses Gemini to analyze the player's guess history and provide strategic coaching.
-
 import os
+from dotenv import load_dotenv
 import google.generativeai as genai
+
+# Explicitly load environment variables so the API key is always found
+load_dotenv()
 
 def get_ai_hint(history: list, low: int, high: int, attempts: int) -> str:
     """
@@ -10,7 +11,7 @@ def get_ai_hint(history: list, low: int, high: int, attempts: int) -> str:
     """
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        return "⚠️ Set GEMINI_API_KEY to enable AI coaching."
+        return "⚠️ Set GEMINI_API_KEY in your .env file to enable AI coaching."
 
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel('gemini-1.5-flash')
@@ -39,7 +40,7 @@ def get_glitch_analysis(history: list, outcomes: list, secret: int) -> str:
     """
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        return "⚠️ Set GEMINI_API_KEY to enable glitch analysis."
+        return "⚠️ Set GEMINI_API_KEY in your .env file to enable glitch analysis."
 
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel('gemini-1.5-flash')
