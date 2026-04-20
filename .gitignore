@@ -1,1 +1,2 @@
-.env
+GEMINI_API_KEY=AIzaSyBWU9ca0xm4ztAaYnMsPxQNQu98My4VvO4
+GEMINI_MODEL=gemini-2.5-flash
