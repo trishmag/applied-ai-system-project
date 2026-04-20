@@ -1,4 +1,4 @@
-cat << 'EOF' > app.py
+
 import streamlit as st
 import random
 from dotenv import load_dotenv
@@ -246,4 +246,3 @@ with tab_eval:
 - 🎯 Average attempts to win: {stats['avg_attempts']}
 - 💯 Average score: {stats['avg_score']}
         """)
-EOF
